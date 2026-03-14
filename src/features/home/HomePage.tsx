@@ -246,45 +246,62 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section className="py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((f) => (
-            <div
-              key={f.title}
-              className="p-5 bg-white dark:bg-gray-800 rounded-2xl border"
-            >
-              <div className="text-xl font-semibold">{f.title}</div>
-              <p className="mt-2 text-sm">{f.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* COMBINED FEATURES & PROJECTS */}
+      <section className="py-16 bg-[#0B0F19] text-white w-full rounded-tr-3xl rounded-tl-3xl mt-8">
+        <div className="max-w-7xl mx-auto space-y-16 px-6 md:px-8">
+          {/* FEATURES / What we do */}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">What we do</h2>
+            <p className="mt-3 text-gray-500 dark:text-gray-400 text-sm md:text-base">
+              End-to-end product development with emphasis on speed, reliability and maintainability.
+            </p>
 
-      {/* PROJECTS */}
-      <section className="py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {recentProjects.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/projects/${p.slug}`}
-              className="block rounded-2xl overflow-hidden shadow-md"
-            >
-              <div className="relative h-44">
-                <Image
-                  src={p.coverImg}
-                  alt={p.title}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-              </div>
-              <div className="p-4">
-                <div className="font-medium">{p.title}</div>
-                <div className="text-sm mt-1 line-clamp-2">{p.shortDesc}</div>
-              </div>
-            </Link>
-          ))}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {features.map((f) => (
+                <div
+                  key={f.title}
+                  className="p-6 bg-[#1f242f] rounded-2xl border border-gray-700/50 hover:bg-[#252b38] transition"
+                >
+                  <div className="text-lg font-semibold text-white">{f.title}</div>
+                  <p className="mt-3 text-sm text-gray-400 leading-relaxed">{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* PROJECTS / Recent projects */}
+          <div>
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Recent projects</h2>
+              <Link href="/projects" className="text-yellow-500 hover:text-yellow-400 font-semibold text-sm transition">
+                See all
+              </Link>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recentProjects.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/projects/${p.slug}`}
+                  className="block rounded-2xl overflow-hidden bg-[#1f242f] border border-gray-700/50 hover:border-gray-600 transition group flex flex-col"
+                >
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image
+                      src={p.coverImg}
+                      alt={p.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition duration-500"
+                      unoptimized
+                    />
+                  </div>
+                  <div className="p-6 flex-1">
+                    <div className="text-lg font-semibold text-white">{p.title}</div>
+                    <div className="text-sm mt-2 text-gray-400 leading-relaxed line-clamp-2">{p.shortDesc}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
