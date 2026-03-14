@@ -101,10 +101,10 @@ export default function Header() {
 
             <div className="leading-tight">
               <span className="block text-lg md:text-xl font-semibold text-gray-900 dark:text-white">
-                Sigmaix Tech
+                Sigmaix Technologies
               </span>
               <span className="block text-xs text-gray-600 dark:text-gray-300 -mt-0.5">
-                Innovations Pvt Ltd
+                Building Smarter Digital Solutions
               </span>
             </div>
           </motion.a>

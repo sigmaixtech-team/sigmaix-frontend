@@ -168,7 +168,10 @@ export default function HomePage() {
 
               {/* Description Paragraph */}
               <p className="text-gray-600 dark:text-gray-300 md:text-lg max-w-xl leading-relaxed mt-2">
-                We engineer intelligence. We secure trust. We power decentralization. Through advanced AI and Blockchain solutions, we transform complex challenges into smart, transparent, and scalable digital success.
+                We engineer intelligence. We secure trust. We power
+                decentralization. Through advanced AI and Blockchain solutions,
+                we transform complex challenges into smart, transparent, and
+                scalable digital success.
               </p>
 
               {/* Stats */}
@@ -224,7 +227,8 @@ export default function HomePage() {
                 transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
                 className="absolute w-64 h-64 md:w-80 md:h-80 rounded-full border border-gray-200 dark:border-gray-700/50 bg-gray-50/50 dark:bg-[#14141e]/50"
                 style={{
-                  boxShadow: "inset 0 0 40px rgba(0,0,0,0.1), 0 0 40px rgba(0,0,0,0.05)"
+                  boxShadow:
+                    "inset 0 0 40px rgba(0,0,0,0.1), 0 0 40px rgba(0,0,0,0.05)",
                 }}
               >
                 {/* A small glowing dot on the circle ring to make the spin more visible */}
@@ -247,23 +251,32 @@ export default function HomePage() {
       </section>
 
       {/* COMBINED FEATURES & PROJECTS */}
-      <section className="py-16 bg-[#0B0F19] text-white w-full rounded-tr-3xl rounded-tl-3xl mt-8">
+      <section className="py-16 bg-gray-50 dark:bg-[#0B0F19] text-gray-900 dark:text-white w-full rounded-tr-3xl rounded-tl-3xl mt-8">
         <div className="max-w-7xl mx-auto space-y-16 px-6 md:px-8">
           {/* FEATURES / What we do */}
           <div>
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">What we do</h2>
-            <p className="mt-3 text-gray-500 dark:text-gray-400 text-sm md:text-base">
-              End-to-end product development with emphasis on speed, reliability and maintainability.
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
+              What we do
+            </h2>
+
+            <p className="mt-3 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+              End-to-end product development with emphasis on speed, reliability
+              and maintainability.
             </p>
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="p-6 bg-[#1f242f] rounded-2xl border border-gray-700/50 hover:bg-[#252b38] transition"
+                  className="p-6 bg-white dark:bg-[#1f242f] rounded-2xl border border-gray-200 dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-[#252b38] transition"
                 >
-                  <div className="text-lg font-semibold text-white">{f.title}</div>
-                  <p className="mt-3 text-sm text-gray-400 leading-relaxed">{f.desc}</p>
+                  <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {f.title}
+                  </div>
+
+                  <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {f.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -272,8 +285,14 @@ export default function HomePage() {
           {/* PROJECTS / Recent projects */}
           <div>
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">Recent projects</h2>
-              <Link href="/projects" className="text-yellow-500 hover:text-yellow-400 font-semibold text-sm transition">
+              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
+                Recent projects
+              </h2>
+
+              <Link
+                href="/projects"
+                className="text-yellow-500 hover:text-yellow-400 font-semibold text-sm transition"
+              >
                 See all
               </Link>
             </div>
@@ -283,7 +302,7 @@ export default function HomePage() {
                 <Link
                   key={p.slug}
                   href={`/projects/${p.slug}`}
-                  className="block rounded-2xl overflow-hidden bg-[#1f242f] border border-gray-700/50 hover:border-gray-600 transition group flex flex-col"
+                  className="block rounded-2xl overflow-hidden bg-white dark:bg-[#1f242f] border border-gray-200 dark:border-gray-700/50 hover:border-gray-300 dark:hover:border-gray-600 transition group flex flex-col"
                 >
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image
@@ -294,9 +313,15 @@ export default function HomePage() {
                       unoptimized
                     />
                   </div>
+
                   <div className="p-6 flex-1">
-                    <div className="text-lg font-semibold text-white">{p.title}</div>
-                    <div className="text-sm mt-2 text-gray-400 leading-relaxed line-clamp-2">{p.shortDesc}</div>
+                    <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                      {p.title}
+                    </div>
+
+                    <div className="text-sm mt-2 text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
+                      {p.shortDesc}
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -332,7 +357,7 @@ export default function HomePage() {
         </div>
 
         <div className="mt-6 text-center text-xs text-gray-500">
-          © {new Date().getFullYear()} Sigmaix Tech Innovations Pvt Ltd.
+          © {new Date().getFullYear()} Sigmaix Technologies
         </div>
       </footer>
     </div>
