@@ -144,12 +144,13 @@ export default function HomePage() {
       {/* HERO */}
       <section className="pt-8 md:pt-14 pb-16 md:pb-20">
         <div className="max-w-7xl mx-auto px-6 md:px-8 md:min-h-[78vh] flex items-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start w-full">
             {/* LEFT */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.48 }}
+              className="flex flex-col gap-6"
             >
               <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
                 We build{" "}
@@ -159,7 +160,19 @@ export default function HomePage() {
                 for web & mobile
               </h1>
 
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl text-sm">
+              {/* Gradient Line & Setup */}
+              <div className="flex items-center gap-4 text-xs font-semibold tracking-widest text-gray-500 dark:text-gray-400 uppercase mt-2">
+                <div className="h-1.5 w-16 rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500"></div>
+                DESIGN • BUILD • SCALE
+              </div>
+
+              {/* Description Paragraph */}
+              <p className="text-gray-600 dark:text-gray-300 md:text-lg max-w-xl leading-relaxed mt-2">
+                We engineer intelligence. We secure trust. We power decentralization. Through advanced AI and Blockchain solutions, we transform complex challenges into smart, transparent, and scalable digital success.
+              </p>
+
+              {/* Stats */}
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl text-sm">
                 <Stat
                   value={120}
                   suffix="+"
@@ -181,14 +194,18 @@ export default function HomePage() {
                 />
               </div>
 
-              <div className="mt-7 flex flex-wrap gap-3">
+              {/* Actions */}
+              <div className="mt-6 flex flex-wrap gap-4">
                 <Link
                   href="/contact"
-                  className="px-5 py-3 rounded-lg bg-yellow-400 font-semibold"
+                  className="px-6 py-3 rounded-lg bg-yellow-400 text-black font-semibold hover:bg-yellow-500 transition"
                 >
                   Work with us
                 </Link>
-                <Link href="/projects" className="px-5 py-3 rounded-lg border">
+                <Link
+                  href="/projects"
+                  className="px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition"
+                >
                   View projects
                 </Link>
               </div>
@@ -199,14 +216,28 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full flex items-center justify-center"
+              className="relative w-full flex items-center justify-center min-h-[400px] mt-2 lg:mt-0"
             >
-              <div className="relative w-40 h-40 md:w-56 md:h-56">
+              {/* Spinning Circle Behind Logo */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+                className="absolute w-64 h-64 md:w-80 md:h-80 rounded-full border border-gray-200 dark:border-gray-700/50 bg-gray-50/50 dark:bg-[#14141e]/50"
+                style={{
+                  boxShadow: "inset 0 0 40px rgba(0,0,0,0.1), 0 0 40px rgba(0,0,0,0.05)"
+                }}
+              >
+                {/* A small glowing dot on the circle ring to make the spin more visible */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-yellow-400 rounded-full shadow-[0_0_15px_rgba(250,204,21,0.8)]"></div>
+              </motion.div>
+
+              {/* Logo (Static) */}
+              <div className="relative w-32 h-32 md:w-48 md:h-48 z-10">
                 <Image
                   src="/images/newLogo.png"
                   alt="Sigmaix Tech logo"
                   fill
-                  className="object-contain"
+                  className="object-contain drop-shadow-2xl"
                   priority
                 />
               </div>
