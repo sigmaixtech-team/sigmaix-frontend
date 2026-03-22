@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.sigmaix.tech/sitemap.xml",
+    sitemap: "https://www.sigmaix.io/sitemap.xml",
   };
 }
