@@ -3,11 +3,28 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Project } from "@/data/projects";
 import { useState, useEffect } from "react";
 import { API_ENDPOINTS } from "../../../../lib/api";
 
 export default function ProjectsPage() {
+  type Project = {
+    _id?: string;
+    slug: string;
+    title: string;
+    type: string;
+    shortDesc: string;
+    fullDesc: string;
+    challenge: string;
+    solution: string;
+    stack: string[];
+    results: string[];
+    coverImg: string;
+    images: string[];
+    client: string;
+    role: string;
+    year: string;
+    liveUrl?: string;
+  };
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {

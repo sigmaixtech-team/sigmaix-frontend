@@ -1,4 +1,3 @@
-import { Project } from "@/data/projects";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +7,24 @@ import { API_ENDPOINTS } from "../../../../../lib/api";
 /* ===========================
    Fetch Single Project
 =========================== */
+type Project = {
+  _id?: string;
+  slug: string;
+  title: string;
+  type: string;
+  shortDesc: string;
+  fullDesc: string;
+  challenge: string;
+  solution: string;
+  stack: string[];
+  results: string[];
+  coverImg: string;
+  images: string[];
+  client: string;
+  role: string;
+  year: string;
+  liveUrl?: string;
+};
 async function getProject(slug: string): Promise<Project | undefined> {
   try {
     const res = await fetch(API_ENDPOINTS.projectBySlug(slug), {

@@ -10,8 +10,26 @@ import {
   useTransform,
   animate,
 } from "framer-motion";
-import { Project } from "@/data/projects";
 import { API_ENDPOINTS } from "../../../lib/api";
+
+type Project = {
+  _id?: string;
+  slug: string;
+  title: string;
+  type: string;
+  shortDesc: string;
+  fullDesc: string;
+  challenge: string;
+  solution: string;
+  stack: string[];
+  results: string[];
+  coverImg: string;
+  images: string[];
+  client: string;
+  role: string;
+  year: string;
+  liveUrl?: string;
+};
 
 interface Feature {
   title: string;
