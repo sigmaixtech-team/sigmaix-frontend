@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,9 +28,7 @@ type Project = {
 
 async function getProject(slug: string): Promise<Project | undefined> {
   try {
-    const res = await fetch(API_ENDPOINTS.projectBySlug(slug), {
-      cache: "no-store",
-    });
+    const res = await fetch(API_ENDPOINTS.projectBySlug(slug));
 
     if (!res.ok) return undefined;
 
@@ -155,7 +151,6 @@ export default async function ProjectDetailsPage({
               </p>
             </div>
 
-            {/* CHALLENGE */}
             <div className="bg-white dark:bg-[#151b2b] p-8 md:p-10 rounded-2xl border border-gray-100 dark:border-gray-800/60">
               <h3 className="text-xl font-bold mb-4 text-red-600 dark:text-red-400">
                 The Challenge
@@ -166,7 +161,6 @@ export default async function ProjectDetailsPage({
               </p>
             </div>
 
-            {/* SOLUTION */}
             <div className="bg-white dark:bg-[#151b2b] p-8 md:p-10 rounded-2xl border border-gray-100 dark:border-gray-800/60">
               <h3 className="text-xl font-bold mb-4 text-emerald-600 dark:text-emerald-400">
                 Our Solution
@@ -177,7 +171,6 @@ export default async function ProjectDetailsPage({
               </p>
             </div>
 
-            {/* GALLERY */}
             <div>
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
                 Gallery
@@ -232,48 +225,6 @@ export default async function ProjectDetailsPage({
 
                   <div className="font-semibold">{project.role}</div>
                 </div>
-
-                <div>
-                  <div className="text-xs uppercase text-gray-500 font-bold mb-2">
-                    Tech Stack
-                  </div>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-lg text-xs font-semibold"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-xs uppercase text-gray-500 font-bold mb-3">
-                    Key Results
-                  </div>
-
-                  <ul className="space-y-3">
-                    {project.results.map((res, i) => (
-                      <li key={i} className="font-semibold">
-                        ✓ {res}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block mt-6 text-center bg-yellow-400 hover:bg-yellow-500 text-black py-2 rounded-lg font-semibold"
-                  >
-                    Visit Live Project
-                  </a>
-                )}
               </div>
             </div>
           </div>
