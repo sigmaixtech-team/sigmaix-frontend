@@ -1,4 +1,5 @@
 export const dynamic = "force-dynamic";
+
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,6 +27,7 @@ type Project = {
   year: string;
   liveUrl?: string;
 };
+
 async function getProject(slug: string): Promise<Project | undefined> {
   try {
     const res = await fetch(API_ENDPOINTS.projectBySlug(slug), {
@@ -41,29 +43,14 @@ async function getProject(slug: string): Promise<Project | undefined> {
 }
 
 /* ===========================
-   Fetch All Projects
-=========================== */
-async function getProjects(): Promise<Project[]> {
-  try {
-    const res = await fetch(API_ENDPOINTS.projects);
-
-    if (!res.ok) return [];
-
-    return res.json();
-  } catch {
-    return [];
-  }
-}
-
-/* ===========================
    Metadata
 =========================== */
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
 
   const project = await getProject(slug);
 
@@ -80,25 +67,14 @@ export async function generateMetadata({
 }
 
 /* ===========================
-   Static Params
-=========================== */
-export async function generateStaticParams() {
-  const projects = await getProjects();
-
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
-}
-
-/* ===========================
    Page Component
 =========================== */
 export default async function ProjectDetailsPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
 
   const project = await getProject(slug);
 
@@ -141,6 +117,7 @@ export default async function ProjectDetailsPage({
                   <path d="M8 15L1 8l7-7" strokeLinecap="round" />
                 </svg>
               </div>
+
               <span className="font-medium text-sm tracking-wide">
                 Back to Projects
               </span>
@@ -172,6 +149,7 @@ export default async function ProjectDetailsPage({
               <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
                 Overview
               </h2>
+
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-loose">
                 {project.fullDesc}
               </p>
@@ -182,6 +160,7 @@ export default async function ProjectDetailsPage({
               <h3 className="text-xl font-bold mb-4 text-red-600 dark:text-red-400">
                 The Challenge
               </h3>
+
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {project.challenge}
               </p>
@@ -192,6 +171,7 @@ export default async function ProjectDetailsPage({
               <h3 className="text-xl font-bold mb-4 text-emerald-600 dark:text-emerald-400">
                 Our Solution
               </h3>
+
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {project.solution}
               </p>
@@ -202,6 +182,7 @@ export default async function ProjectDetailsPage({
               <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
                 Gallery
               </h2>
+
               <div className="grid grid-cols-1 gap-8">
                 {project.images.map((img, idx) => (
                   <div
@@ -232,6 +213,7 @@ export default async function ProjectDetailsPage({
                   <div className="text-xs uppercase text-gray-500 font-bold">
                     Client
                   </div>
+
                   <div className="font-semibold">{project.client}</div>
                 </div>
 
@@ -239,6 +221,7 @@ export default async function ProjectDetailsPage({
                   <div className="text-xs uppercase text-gray-500 font-bold">
                     Year
                   </div>
+
                   <div className="font-semibold">{project.year}</div>
                 </div>
 
@@ -246,6 +229,7 @@ export default async function ProjectDetailsPage({
                   <div className="text-xs uppercase text-gray-500 font-bold">
                     Role
                   </div>
+
                   <div className="font-semibold">{project.role}</div>
                 </div>
 
@@ -253,6 +237,7 @@ export default async function ProjectDetailsPage({
                   <div className="text-xs uppercase text-gray-500 font-bold mb-2">
                     Tech Stack
                   </div>
+
                   <div className="flex flex-wrap gap-2">
                     {project.stack.map((tech) => (
                       <span
@@ -269,6 +254,7 @@ export default async function ProjectDetailsPage({
                   <div className="text-xs uppercase text-gray-500 font-bold mb-3">
                     Key Results
                   </div>
+
                   <ul className="space-y-3">
                     {project.results.map((res, i) => (
                       <li key={i} className="font-semibold">
