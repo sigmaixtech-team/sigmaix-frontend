@@ -29,12 +29,24 @@ type Project = {
 
 async function getProject(slug: string): Promise<Project | undefined> {
   try {
-    const res = await fetch(API_ENDPOINTS.projectBySlug(slug));
+    const url = API_ENDPOINTS.projectBySlug(slug);
 
-    if (!res.ok) return undefined;
+    console.log("FETCHING:", url);
+
+    const res = await fetch(url, {
+      cache: "no-store",
+    });
+
+    console.log("STATUS:", res.status);
+
+    if (!res.ok) {
+      return undefined;
+    }
 
     return res.json();
-  } catch {
+  } catch (err) {
+    console.log("FETCH ERROR:", err);
+
     return undefined;
   }
 }
